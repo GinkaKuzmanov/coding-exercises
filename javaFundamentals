@@ -1,0 +1,36 @@
+//Math class training 
+        Scanner sc = new Scanner(System.in);
+       double [] nums =  Arrays.stream(sc.nextLine().split("\\s+")).mapToDouble(Double::parseDouble).toArray();
+
+        double a = nums[0];
+        double b = nums[1];
+        double c = nums[2];
+
+
+        //za koren
+        double aSquare = Math.pow(a,2);
+        double bSquare = Math.pow(b,2);
+        double sqrt = Math.sqrt(c);
+        double baseNum = (aSquare + bSquare) /(aSquare-bSquare);
+
+        double powerNum = (a+b+c) / sqrt;
+
+        double f1 = Math.pow(baseNum,powerNum);
+        //za vtoroto uravnenie;
+        double cRect = Math.pow(c,3);
+        double baseF2 = (aSquare + bSquare - cRect);
+        double stepenta = (a-b);
+
+        double f2 = Math.pow(baseF2,stepenta);
+
+        double [] average = new double [] {a,b,c};
+        double [] avFormulae = new double[]{f1,f2};
+
+       double average1 = Arrays.stream(average).average().getAsDouble();
+       double average2 = Arrays.stream(avFormulae).average().getAsDouble();
+       double result = average1 - average2;
+
+        double f3 = Math.abs(result);
+
+        System.out.println(String.format("F1 result: %.2f; F2 result: %.2f; Diff: %.2f", f1,f2,f3));
+
